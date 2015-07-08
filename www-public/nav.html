@@ -1,5 +1,5 @@
-<!-- Static navbar -->
-      <nav class="navbar navbar-default">
+
+      <!--<nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Project name</a>
@@ -8,9 +8,36 @@
             <ul class="nav navbar-nav">
               <li><a href="#">Home</a></li>
               <li><a href="#/register">Register</a></li>
-              <li><a href="#/login">Login</a></li>
+              <li ng-controller="StatusController"><a href="#/login" ng-hide="email">Login</a></li>
+              <li ng-controller="StatusController"><a href="#" ng-click="logout()" ng-show="email">Logout</a></li>            
             </ul>
-            
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
+          </div>
+          <span class="navbar-text navbar-right" ng-controller="StatusController">{{email}}</span>  
+        </div>
+      </nav>-->
+      
+      
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Esquire Barber Shop</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li ng-controller="StatusController"><a href="#/register" ng-hide="email">Register</a></li>
+        <li ng-controller="StatusController"><a href="#/appointments" ng-show="email">Appointments</a></li>
+        <li ng-controller="StatusController"><a href="#/login" ng-hide="email">Login</a></li>
+        <li ng-controller="StatusController"><a href="#" ng-click="logout()" ng-show="email">Logout</a></li>  
+      </ul>
+     
+      <ul class="nav navbar-nav navbar-right">
+        <li><span class="navbar-text" ng-controller="StatusController">{{email}}</span></li>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -1,4 +1,4 @@
-myApp.factory('Authentication',function($firebaseAuth,$firebaseArray,$location,FIREBASE_URL){
+myApp.factory('Authentication',function($rootScope,$firebaseAuth,$firebaseArray,$location,FIREBASE_URL){
 	var ref = new Firebase(FIREBASE_URL);
 	var authObj = $firebaseAuth(ref);
 
@@ -7,8 +7,20 @@ myApp.factory('Authentication',function($firebaseAuth,$firebaseArray,$location,F
 			return authObj.$authWithPassword({
 				email: user.email,
 				password: user.password
+			}).then(function(authData){
+				$rootScope.$broadcast('$firebaseAuth:login', authData);
+				// return authObj;
 			});
-		} //login
+		}, //login
+		
+		logout : function(){
+			return authObj.$unauth();
+		},
+		
+		isLoggedIn : function(){
+			return authObj.$getAuth();
+		}
+		
 	} //myobject
 	return myObject;
 	

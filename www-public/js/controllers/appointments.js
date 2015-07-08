@@ -1,4 +1,4 @@
-myApp.controller('AppointmentsController', function($scope, $firebaseObject, $firebaseArray){
+myApp.controller('AppointmentsController', function($scope, $firebaseObject, FIREBASE_URL, $firebaseArray){
 	var ref = new Firebase(FIREBASE_URL + '/appointments');
 	
 	// var appointments = $firebaseObject(ref);
