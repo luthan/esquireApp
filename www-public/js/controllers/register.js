@@ -27,26 +27,33 @@ myApp.controller('RegisterController',
 		}
 		
 		$scope.register = function(){
-			authObj.$createUser({
-				email: $scope.user.email,
-				password: $scope.user.password
-			}).then(function(userData){
-				// console.log(userData);
-				users.$add({
-					userID: userData.uid,
-					firstName: $scope.user.firstName,
-					lastName: $scope.user.lastName
-				});
-				return authObj.$authWithPassword({
-					email: $scope.user.email,
-					password: $scope.user.password
-				});
-			}).then(function(authData){
+			Authentication.register($scope.user)
+			.then(function(authData){
 				$location.path('/appointments');
 			}).catch(function(error){
 				$scope.message = error.toString();
 			});
+		}
+			// authObj.$createUser({
+			// 	email: $scope.user.email,
+			// 	password: $scope.user.password
+			// }).then(function(userData){
+			// 	// console.log(userData);
+			// 	users.$add({
+			// 		userID: userData.uid,
+			// 		firstName: $scope.user.firstName,
+			// 		lastName: $scope.user.lastName
+			// 	});
+			// 	return authObj.$authWithPassword({
+			// 		email: $scope.user.email,
+			// 		password: $scope.user.password
+			// 	});
+			// }).then(function(authData){
+			// 	$location.path('/appointments');
+			// }).catch(function(error){
+			// 	$scope.message = error.toString();
+			// });
 			
-		} //register
+		//} //register
 		
 });
