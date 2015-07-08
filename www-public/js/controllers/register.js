@@ -1,5 +1,11 @@
 myApp.controller('RegisterController', 
 	function($scope, $location){
-	
-	$scope.name = 'Paul';
+		$scope.login = function(){
+			$location.path('/appointments')
+		} //login
+		
+		$scope.register = function(){
+			
+		} //register
+		
 });

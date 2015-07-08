@@ -1,5 +1,7 @@
 /// <reference path="../../typings/angularjs/angular.d.ts"/>
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'firebase', 'appControllers']);
+
+var appControllers = angular.module('appControllers',['firebase']);
 
 myApp.config(['$routeProvider', function($routeProvider){
 		$routeProvider
@@ -11,8 +13,11 @@ myApp.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'views/login.html',
 			controller: 'RegisterController'
 		})
+		.when('/appointments', {
+			templateUrl: 'views/appointments.html',
+			controller: 'AppointmentsController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
 	}]);
-// console.log("test");

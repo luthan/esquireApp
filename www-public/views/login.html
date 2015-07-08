@@ -1,5 +1,24 @@
 <section class="login">
-	<form name="loginForm" novalidate>
+	<form name="loginform" 
+		ng-submit="login()" 
+		novalidate>
+		<div class="col-lg-6 col-lg-offset-3">
 		<h1>Hi there {{name}}</h1>
+		
+		<input class="form-control" type="email" name="email" placeholder="Email" 
+			ng-model="user.email" ng-required="true" autofocus>
+			<p class="error validationerror" 
+				ng-show="loginform.email.$invalid && loginform.email.$touched">
+				Must be a valid email</p><br>
+		<input class="form-control" type="password" name="password" placeholder="Password" 
+			ng-model="user.password" ng-required="true">
+			<p class="error validationerror"
+				ng-show="loginform.password.$invalid && loginform.password.$touched">
+				Password is required</p><br>
+		<button type="submit" class="btn btn-sm btn-primary col-lg-12" style="width:100%"
+			ng-disabled="loginform.$invalid">Login</button>
+		<p><br> or <a href="#/register">Register</a></p>
+		</div>
+		
 	</form>
 </section>
