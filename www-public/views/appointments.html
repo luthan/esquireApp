@@ -1,0 +1,16 @@
+<section class="appointments">
+	<h3>Appointments</h3>
+	
+	<h5>Add appointment</h5>
+	<form name="apptform"
+		ng-submit="addAppt()"
+		novalidate>
+		<input type="text" name="apptname" placeholder="Appointment name"
+			ng-model="apptname" ng-required="true">
+			<button type="submit" class="btn btn-sm btn-success" ng-disabled="apptform.$invalid">Add Appt</button>
+	</form>	
+	
+	<div ng-repeat="(id,appt) in appointments">
+		<button class="btn btn-danger" ng-click="$scope.array.$remove(id)">{{appt.name}}</button>
+	</div>
+</section>
