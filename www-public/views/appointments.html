@@ -11,6 +11,6 @@
 	</form>	
 	
 	<div ng-repeat="(id,appt) in appointments">
-		<button class="btn btn-danger" ng-click="$scope.array.$remove(id)">{{appt.name}}</button>
+		<button class="btn btn-danger" ng-click="deleteAppt(id)">{{appt.name}}</button>
 	</div>
 </section>

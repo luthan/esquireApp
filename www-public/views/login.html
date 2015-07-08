@@ -4,7 +4,7 @@
 		novalidate>
 		<div class="col-lg-6 col-lg-offset-3">
 		<h1>Hi there {{name}}</h1>
-		
+		<p ng-show="message">{{message}}</p>
 		<input class="form-control" type="email" name="email" placeholder="Email" 
 			ng-model="user.email" ng-required="true" autofocus>
 			<p class="error validationerror" 
