@@ -1,16 +1,27 @@
 <section class="appointments">
 	<h3>Appointments</h3>
-	
-	<h5>Add appointment</h5>
-	<form name="apptform"
-		ng-submit="addAppt()"
-		novalidate>
-		<input type="text" name="apptname" placeholder="Appointment name"
-			ng-model="apptname" ng-required="true">
-			<button type="submit" class="btn btn-sm btn-success" ng-disabled="apptform.$invalid">Add Appt</button>
-	</form>	
-	
-	<div ng-repeat="(id,appt) in appointments">
-		<button class="btn btn-danger" ng-click="deleteAppt(id)">{{appt.name}}</button>
+	<div ng-hide="isLoggedIn()">
+		<h4>Need to be logged in</h4>
 	</div>
+	
+	<div ng-show="isLoggedIn()">
+		<h5>Add appointment</h5>
+		<form name="apptform"
+			ng-submit="addAppt()"
+			novalidate>
+			<div class="input-group col-lg-6">
+				
+			<input type="text" name="apptname" placeholder="Appointment name" class="form-control"
+				ng-model="apptname" ng-required="true">
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-success" ng-disabled="apptform.$invalid">+</button>
+				</span>
+			</div>
+		</form>	
+		
+		<div ng-repeat="(id,appt) in appointments"><br>
+			<button class="btn btn-danger" ng-click="deleteAppt(id)">{{appt.name}} - {{id}}</button>
+		</div>
+	</div>
+		
 </section>

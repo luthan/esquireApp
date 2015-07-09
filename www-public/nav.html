@@ -29,7 +29,7 @@
       <ul class="nav navbar-nav">
         <li><a href="#">Home</a></li>
         <li ng-controller="StatusController"><a href="#/register" ng-hide="email">Register</a></li>
-        <li ng-controller="StatusController"><a href="#/appointments" ng-show="email">Appointments</a></li>
+        <li ng-controller="StatusController"><a href="#/appointments" ng-show="email">Appointments ({{howManyAppointments}})</a></li>
         <li ng-controller="StatusController"><a href="#/login" ng-hide="email">Login</a></li>
         <li ng-controller="StatusController"><a href="#" ng-click="logout()" ng-show="email">Logout</a></li>  
       </ul>

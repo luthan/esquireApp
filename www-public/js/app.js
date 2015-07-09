@@ -19,6 +19,6 @@ myApp.config(['$routeProvider', function($routeProvider){
 			controller: 'AppointmentsController'
 		})
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/appointments'
 		});
 	}]);

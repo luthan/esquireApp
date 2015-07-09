@@ -16,10 +16,10 @@ myApp.factory('Authentication',function($rootScope,$firebaseAuth,$firebaseArray,
 		
 		logout : function(){
 			return authObj.$unauth();
-		},
+		}, //logout
 		
 		isLoggedIn : function(){
-			return authObj.$getAuth();
+			return authObj.$getAuth() != null;
 		},
 		
 		register : function(user){
@@ -46,6 +46,10 @@ myApp.factory('Authentication',function($rootScope,$firebaseAuth,$firebaseArray,
 		} //register
 		
 	} //myobject
+	
+	$rootScope.isLoggedIn = function(){
+		return myObject.isLoggedIn();
+	}
 	return myObject;
 	
 })
