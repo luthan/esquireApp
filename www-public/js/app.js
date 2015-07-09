@@ -18,6 +18,14 @@ myApp.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'views/appointments.html',
 			controller: 'AppointmentsController'
 		})
+		.when('/servicesAdmin', {
+			templateUrl: 'views/servicesAdmin.html',
+			controller: 'ServicesAdminController'
+		})
+		.when('/editService/:serviceId', {
+			templateUrl: 'views/editService.html',
+			controller: 'EditServiceController'
+		})
 		.otherwise({
 			redirectTo: '/appointments'
 		});
