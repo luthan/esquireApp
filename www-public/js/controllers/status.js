@@ -1,4 +1,4 @@
-myApp.controller('StatusController', function($scope, $rootScope, $firebaseAuth, FIREBASE_URL, Authentication, $location){
+myApp.controller('StatusController', function($scope, $rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL, Authentication, $location){
 	
 	var ref = new Firebase(FIREBASE_URL);
 	var authObj = $firebaseAuth(ref);

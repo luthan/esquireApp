@@ -1,0 +1,64 @@
+<section class="servicesAdmin">
+	<h3>Services Administration</h3>
+	<div ng-hide="isLoggedIn()">
+		<h4>Need to be logged in</h4>
+	</div>
+	
+	<div ng-show="isLoggedIn()">
+		<h4>Add Service</h4>
+		<form name="serviceform"
+			ng-submit="addService()"
+			novalidate>
+			
+			<div class="form-group">
+				<label>Service Name</label>	
+				<input type="text" name="serviceName" placeholder="Service name" class="form-control"
+					ng-model="serviceName" ng-required="true">
+			</div>
+			
+			<div class="form-group">
+				<label>Service Description</label>
+				<input type="text" name="serviceDescription" placeholder="Service description" class="form-control"
+					ng-model="serviceDescription" ng-required="true">
+			</div>
+			
+			<div class="form-group">
+				<label>Service Price</label>	
+				<input type="text" name="servicePrice" placeholder="Service price" class="form-control"
+					ng-model="servicePrice" ng-required="true">
+			</div>
+			<div class="form-group">
+				<label>Service Duration</label>	
+				<input type="text" name="serviceDuration" placeholder="Service duration" class="form-control"
+					ng-model="serviceDuration" ng-required="true">
+			</div>
+			<div class="form-group">
+				<label>Can Be Booked?</label>
+				<select name="canBook" class="form-control"
+					ng-model="canBook" ng-required="true">
+					<option value="">-- Select --</option>
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-success" ng-disabled="serviceform.$invalid">Add service</button>
+			
+		</form>	
+		<br>
+		<div class='col-lg-6 row'>
+			<div ng-repeat="(key,service) in services">
+				<div class="alert alert-info">{{service.name}}&nbsp;&nbsp;
+					<div class="pull-right">
+						<a class="btn btn-sm btn-primary" aria-hidden="true" ng-href="#/editService/{{key}}">
+							<span class="glyphicon glyphicon-edit"></span>
+						</a>
+						<button class="btn btn-sm btn-danger" aria-hidden="true" ng-click="deleteService(key)">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</section>
