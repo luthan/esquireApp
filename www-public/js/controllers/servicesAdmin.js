@@ -19,6 +19,7 @@ myApp.controller('ServicesAdminController',
 		
 			servicesArray.$loaded().then(function(){
 				$rootScope.howManyServices = servicesArray.length;
+				console.log("array loaded");
 			});
 			
 			servicesArray.$watch(function(event){

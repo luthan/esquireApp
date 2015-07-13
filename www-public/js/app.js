@@ -26,7 +26,11 @@ myApp.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'views/editService.html',
 			controller: 'EditServiceController'
 		})
+		.when('/staff/:staffId?', {
+			templateUrl: 'views/staff.html',
+			controller: 'StaffController'
+		})
 		.otherwise({
-			redirectTo: '/appointments'
+			redirectTo: '/'
 		});
 	}]);

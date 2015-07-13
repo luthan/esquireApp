@@ -1,0 +1,101 @@
+<section class="staff">
+	<h3>Staff Administration</h3>
+	<form name="addStaffForm"
+		novalidate
+		ng-submit="addStaff()">
+		
+		<input type="text" class="form-control" ng-model="staffName" placeholder="Staff person's name" ng-required="true"/><br>
+		<button type="submit" class="btn btn-success" ng-disabled="addStaffForm.$invalid">Add Staff</button>
+	</form>
+	<br>
+	<div style="float:left;margin-right: 10px" ng-repeat="(id,staffPerson) in staffDisplayList">
+		<a href="#/staff/{{id}}" class="btn btn-primary">{{staffPerson.name}}</a>
+	</div>
+	<div class="clearfix"></div>
+	<div ng-show="editStaffId">
+		<h3>{{staffMember.name}} Availability</h3>
+		<ul ng-init="tab = 'sunday'" class="nav nav-tabs">
+			<li ng-class="{active:tab==='sunday'}">
+				<a href ng-click="tab = 'sunday'">Sunday</a>
+			</li>
+			<li ng-class="{active:tab==='monday'}">
+				<a href ng-click="tab = 'monday'">Monday</a>
+			</li>
+			<li ng-class="{active:tab==='tuesday'}">
+				<a href ng-click="tab = 'tuesday'">Tuesday</a>
+			</li>
+			<li ng-class="{active:tab==='wednesday'}">
+				<a href ng-click="tab = 'wednesday'">Wednesday</a>
+			</li>
+			<li ng-class="{active:tab==='thursday'}">
+				<a href ng-click="tab = 'thursday'">Thursday</a>
+			</li>
+			<li ng-class="{active:tab==='friday'}">
+				<a href ng-click="tab = 'friday'">Friday</a>
+			</li>
+			<li ng-class="{active:tab==='saturday'}">
+				<a href ng-click="tab = 'saturday'">Saturday</a>
+			</li>
+			<li ng-class="{active:tab==='timeOff'}">
+				<a href ng-click="tab = 'timeOff'">Time Off</a>
+			</li>
+		</ul>
+		<div ng-show="tab==='sunday'">
+			<h4>Sunday</h4>
+			<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+				<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.sunday.indexOf('['+timeSlot+']') > -1]" ng-click="editAvailabilitySlot(editStaffId, 'sunday', timeSlot)">{{timeSlot}}</button>
+			</div>
+		</div>
+		<div ng-show="tab==='monday'">
+			<h4>Monday</h4>
+			<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+				<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.monday.indexOf('['+timeSlot+']') > -1]" ng-click="editAvailabilitySlot(editStaffId, 'monday', timeSlot)">{{timeSlot}}</button>
+			</div>
+		</div>
+		<div ng-show="tab==='tuesday'">
+			<h4>Tuesday</h4>
+			<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+				<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.tuesday.indexOf('['+timeSlot+']') > -1]" ng-click="editAvailabilitySlot(editStaffId, 'tuesday', timeSlot)">{{timeSlot}}</button>
+			</div>
+		</div>
+		<div ng-show="tab==='wednesday'">
+			<h4>Wednesday</h4>
+			<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+				<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.wednesday.indexOf('['+timeSlot+']') > -1]" ng-click="editAvailabilitySlot(editStaffId, 'wednesday', timeSlot)">{{timeSlot}}</button>
+			</div>
+		</div>
+		<div ng-show="tab==='thursday'">
+			<h4>Thursday</h4>
+			<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+				<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.thursday.indexOf('['+timeSlot+']') > -1]" ng-click="editAvailabilitySlot(editStaffId, 'thursday', timeSlot)">{{timeSlot}}</button>
+			</div>
+		</div>
+		<div ng-show="tab==='friday'">
+			<h4>Friday</h4>
+			<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+				<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.friday.indexOf('['+timeSlot+']') > -1]" ng-click="editAvailabilitySlot(editStaffId, 'friday', timeSlot)">{{timeSlot}}</button>
+			</div>
+		</div>
+		<div ng-show="tab==='saturday'">
+			<h4>Saturday</h4>
+			<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+				<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.saturday.indexOf('['+timeSlot+']') > -1]" ng-click="editAvailabilitySlot(editStaffId, 'saturday', timeSlot)">{{timeSlot}}</button>
+			</div>
+		</div>
+		<div ng-show="tab==='timeOff'">
+			<h4>Time Off</h4>
+			<div class="input-group date">
+  <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+</div>
+			<!--<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+				<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.saturday.indexOf('['+timeSlot+']') > -1]" ng-click="editAvailabilitySlot(editStaffId, 'saturday', timeSlot)">{{timeSlot}}</button>
+			</div>-->
+		</div>
+	</div>
+
+</section>
+<script>
+$('#sandbox-container .input-group.date').datepicker({
+    autoclose: true
+});
+</script>

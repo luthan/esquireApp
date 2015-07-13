@@ -19,10 +19,12 @@ myApp.controller('AppointmentsController',
 			appointmentsArray.$loaded().then(function(){
 				$scope.appointments = $firebaseArray(ref);
 				$rootScope.howManyAppointments = appointmentsArray.length;
+				console.log("appts loaded");
 			});
 			
 			appointmentsArray.$watch(function(event){
 				$rootScope.howManyAppointments = appointmentsArray.length;
+				console.log("appts loaded");
 			});
 		
 			// var appointments = $firebaseObject(ref);
