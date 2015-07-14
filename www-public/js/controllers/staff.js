@@ -46,6 +46,7 @@ myApp.controller('StaffController',
 		
 		
 		$scope.editAvailabilitySlot = function(editStaffId, day, timeSlot){	
+			console.log(editStaffId + " " + day + " " + timeSlot);
 			var ref = new Firebase(FIREBASE_URL + '/staff/' + $routeParams.staffId + '/availability/' + day);
 			var availabilityDay = $firebaseObject(ref);
 			availabilityDay.$loaded().then(function(){
@@ -70,8 +71,10 @@ myApp.controller('StaffController',
 			console.log(daysOfWeek[$scope.dt.getDay()]);
 			var ref = new Firebase(FIREBASE_URL + '/staff/' + $routeParams.staffId + '/availability/' + daysOfWeek[$scope.dt.getDay()]);
 			var availabilityDay = $firebaseObject(ref);
+			
 		});
-
+		
+		
 
 
 });
