@@ -1,12 +1,12 @@
 <section class="staff">
 	<h3>Staff Administration</h3>
-	<form name="addStaffForm"
+	<!--<form name="addStaffForm"
 		novalidate
 		ng-submit="addStaff()">
 		
 		<input type="text" class="form-control" ng-model="staffName" placeholder="Staff person's name" ng-required="true"/><br>
 		<button type="submit" class="btn btn-success" ng-disabled="addStaffForm.$invalid">Add Staff</button>
-	</form>
+	</form>-->
 	<br>
 	<div style="float:left;margin-right: 10px" ng-repeat="(id,staffPerson) in staffDisplayList">
 		<a href="#/staff/{{id}}" class="btn btn-primary">{{staffPerson.name}}</a>
@@ -94,17 +94,23 @@
 				</div>
 				<div class="col-lg-8">
 					<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
-						<div ng-switch on="dayOfWeek">
-						<button ng-switch-when="sunday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.sunday.indexOf('['+timeSlot+']') > -1]">{{timeSlot}}</button>
-						<button ng-switch-when="monday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.monday.indexOf('['+timeSlot+']') > -1]">{{timeSlot}}</button>
-						<button ng-switch-when="tuesday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.tuesday.indexOf('['+timeSlot+']') > -1]">{{timeSlot}}</button>
-						<button ng-switch-when="wednesday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.wednesday.indexOf('['+timeSlot+']') > -1]">{{timeSlot}}</button>
-						<button ng-switch-when="thursday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.thursday.indexOf('['+timeSlot+']') > -1]">{{timeSlot}}</button>
-						<button ng-switch-when="friday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.friday.indexOf('['+timeSlot+']') > -1]">{{timeSlot}}</button>
-						<button ng-switch-when="saturday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.saturday.indexOf('['+timeSlot+']') > -1]">{{timeSlot}}</button>
-						</div>
+						<button class="btn" style="width:100%" ng-class="{true:'btn-primary', false:'btn-danger'}[timeOffSlots.indexOf('['+timeSlot+']') > -1]" ng-click="takeTimeOff(timeSlot)">{{timeSlot}}</button>
 					</div>
 				</div>
+				
+				<!--<div class="col-lg-8">
+					<div class="col-lg-6" ng-repeat="timeSlot in timeSlots">
+						<div ng-switch on="dayOfWeek">
+						<button ng-switch-when="sunday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.sunday.indexOf('['+timeSlot+']') > -1]" ng-click="takeTimeOff(editStaffId, dt, timeSlot)">{{timeSlot}}</button>
+						<button ng-switch-when="monday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.monday.indexOf('['+timeSlot+']') > -1]" ng-click="takeTimeOff(editStaffId, dt, timeSlot)">{{timeSlot}}</button>
+						<button ng-switch-when="tuesday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.tuesday.indexOf('['+timeSlot+']') > -1]" ng-click="takeTimeOff(editStaffId, dt, timeSlot)">{{timeSlot}}</button>
+						<button ng-switch-when="wednesday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.wednesday.indexOf('['+timeSlot+']') > -1]" ng-click="takeTimeOff(editStaffId, dt, timeSlot)">{{timeSlot}}</button>
+						<button ng-switch-when="thursday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.thursday.indexOf('['+timeSlot+']') > -1]" ng-click="takeTimeOff(editStaffId, dt, timeSlot)">{{timeSlot}}</button>
+						<button ng-switch-when="friday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.friday.indexOf('['+timeSlot+']') > -1]" ng-click="takeTimeOff(editStaffId, dt, timeSlot)">{{timeSlot}}</button>
+						<button ng-switch-when="saturday" style="width:100%" class="btn" ng-class="{true:'btn-primary', false:'btn-danger'}[staffMember.availability.saturday.indexOf('['+timeSlot+']') > -1]" ng-click="takeTimeOff(editStaffId, dt, timeSlot)">{{timeSlot}}</button>
+						</div>
+					</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
